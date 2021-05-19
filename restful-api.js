@@ -41,7 +41,8 @@ const deleteOptions = {
 const URL = "https://delicate-wood-medusaceratops.glitch.me/movies"
 
 const getMovies = () => {
-    $('#results').html(Spinner())
+
+    $('#results').html('loading...')
     fetch(URL)
         .then(resp => resp.json()) // turns response into javascript object
         .then(movies => {
@@ -50,7 +51,7 @@ const getMovies = () => {
                 $('#results').append(movies.map(
                     movie => $('<p/>').text(movie.title)
                 ))
-            }, 1000)
+            }, 500)
             console.log(movies)
     })
 }
@@ -62,7 +63,12 @@ function getFormData(form) {
             return result
         }, {})
 }
+let movieEdit = $('#edit-movie').val()
+let newRating = $('#')
 
+let patchMovie = {
+    'title': `${movieEdit}`
+}
 // JQuery method for running code after document loads
 $(() => {
     getMovies();
