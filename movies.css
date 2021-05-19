@@ -1,0 +1,8 @@
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.checked {
+    color: orange;
+}
