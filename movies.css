@@ -120,7 +120,8 @@ input, .movie textarea {
 
 #results {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    justify-content: center;
     gap: 10px;
 }
 
