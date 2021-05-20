@@ -18,6 +18,10 @@ html, body {
     justify-content: space-between;
 }
 
+i {
+    transition: color .5s;
+}
+
 .checked {
     color: orange;
 }
@@ -59,6 +63,7 @@ textarea {
 .movie .field {
     display: flex;
     align-items: center;
+    gap: 10px;
     justify-items: center;
 }
 
@@ -123,7 +128,7 @@ input, .movie textarea {
 
 #results {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
 }

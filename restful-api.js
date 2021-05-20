@@ -16,10 +16,25 @@ function debounce(func, wait=700, immediate) {
         if (callNow) func.apply(context, args);
     };
 }
-
+//Array.from turns a list of DOM elements into an array => allows reduce
 function getFormData(form) {
+    // without reduce
+    // const result = {}
+    // for(let i = 0; i<form.elements.length; i++) {
+    //     const input = form.elements[i]
+    //     result[input.name] = input.value
+    // }
+    // return result
     return Array.from(form.elements)
+        // result (what its going to get reduced to) input(item in the array) , {} second parameter is the default value for the result
+        //getting input from the form to turn into a JSON object
+
+        // input is a dom element because we are reducing the form elements // to a single object item  with multiple properties
         .reduce((result, input) => {
+            // const result = {}
+            // const inputName = 'some name'
+            // result[inputName] = 5
+            // result will now be { 'some name': 5 }
             result[input.name] = input.value
             return result
         }, {})
@@ -38,12 +53,54 @@ function Spinner(width = '100px') {
     })
 }
 // made radio function to generate radio inputs for a given value and input
-function Radio(value, input) {
-    return $('<input name="rating" type="radio"/>')
-        .attr({
-            value,
-            checked: ''+input === ''+value
-        })
+// Radio({
+//     name: 'rating',
+//     icon: 'fa-star',
+//     defaultValue: 1,
+//     length: 5
+// })
+function Radio({name, length, icon, defaultValue}) {
+    const container = $('<div/>').css({
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'space-between'
+    })
+    // single value input so that the form only takes in one input
+    const hiddenInput = $('<input type="hidden"/>').attr({
+        name,
+        value: defaultValue
+    })
+
+    function updateButtons() {
+        // use form input to update all of the icons
+        const value = parseInt(hiddenInput.val())
+        const children = container.children().not("input");
+        for (let i = 0; i < children.length; i++) {
+            // eq method gets child element at the index
+            const button = children.eq(i);
+            const id = i + 1
+            if(id <= value) {
+                button.addClass('checked');
+            } else {
+                button.removeClass('checked');
+            }
+        }
+    }
+
+    function RadioButton(id) {
+        return $('<i/>').click(() => {
+            // setting the value of the id to the radio button
+            hiddenInput.val(id)
+            updateButtons()
+            container.change()
+        }).css({cursor: 'pointer'}).addClass('fa ' + icon)
+    }
+    container.append(hiddenInput)
+    for(let i = 1; i<=length; i++) {
+        container.append(RadioButton(i))
+    }
+    updateButtons()
+    return container
 }
 
 const URL = "https://spurious-power-march.glitch.me/movies"
@@ -65,9 +122,8 @@ $(document).ready(() => {
             data
         })
     }
-    //
-    const editMovie = debounce(edit)
-// deleteMovie function takes in an ID and uses
+
+// deleteMovie function takes in an ID
     function deleteMovie(id) {
         return $.ajax({
             url: `${URL}/${id}`,
@@ -80,6 +136,8 @@ $(document).ready(() => {
     // returns the data objects inside a form to display the cards for each movie
     function MovieCard({id, poster, title, genre, plot, rating}) {
         const formId = `movie-form-${id}`
+
+        const editMovie = debounce(edit);
         // the function handleInput takes in the data from the form Id
         // calls edit movie with the id of the movie and the data from the form
         function handleInput() {
@@ -93,11 +151,12 @@ $(document).ready(() => {
             $('<img alt="coming soon"/>').attr({src: poster ?? './comingsoon.jpg'}),
             $('<div class="field"/>').append(
                 $('<label/>').text('Rating: '),
-                Radio(1, rating).click(handleInput),
-                Radio(2, rating).click(handleInput),
-                Radio(3, rating).click(handleInput),
-                Radio(4, rating).click(handleInput),
-                Radio(5, rating).click(handleInput),
+                Radio({
+                    name: 'rating',
+                    icon: 'fa-star',
+                    defaultValue: rating,
+                    length: 5
+                }).change(handleInput),
             ),
             $('<div class="field"/>').append(
                 $('<label/>').text('Title: '),
