@@ -5,7 +5,7 @@ html, body {
     justify-content: center;
     width: 100%;
     gap: 16px;
-    background: url(popcornbg.jpeg) no-repeat center center fixed;
+    background: url(movie-background.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -29,7 +29,11 @@ textarea {
 }
 
 #add {
-    color: cornflowerblue;
+    color: #ffffff;
+    border-radius: 100px;
+    -moz-box-shadow: 4px 2px 4px 1px #ccc;
+    -webkit-box-shadow: 4px 2px 4px 1px #ccc;
+    box-shadow: 4px 2px 4px 1px #4de837;
     cursor: pointer;
     transition: .3s;
 }
@@ -38,11 +42,11 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid black;
+    border: 1px solid #4f4f4f;
     border-radius: 5px;
     width: 300px;
     padding: 12px;
-    background: #38acff5c;
+    background: rgba(136, 136, 136, 0.36);
     color: white;
     backdrop-filter: blur(11px);
 }
@@ -54,7 +58,6 @@ textarea {
 
 .movie .field {
     display: flex;
-    gap: 20px;
     align-items: center;
     justify-items: center;
 }
