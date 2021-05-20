@@ -1,8 +1,131 @@
+html, body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+    background: url(popcornbg.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+}
+
+#actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checked {
+    color: orange;
+}
+
+textarea {
+    border-radius: 4px;
+    resize: none;
+    height: 500px;
+}
+
+#add {
+    color: cornflowerblue;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 300px;
+    padding: 12px;
+    background: #38acff5c;
+    color: white;
+    backdrop-filter: blur(11px);
+}
+
+.movie .footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.movie .field {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+input, .movie textarea {
+    flex: 1;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid;
+    border-color: white;
+    background: transparent;
+    outline: none;
+    transition: 0.3s;
+    color: white;
+}
+
+#searchContainer {
+    position: relative;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+#searchContainer i {
+    position: absolute;
+    left: 12px;
+}
+
+#search {
+    padding: 4px 32px;
+}
+
+#search:focus {
+    font-size: 1.5rem;
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+.movie input:focus {
+    transform: scale(1.1);
+}
+
+.movie textarea:focus {
+    transform: scale(1.1);
+    border: 2px solid white;
+    padding: 8px;
+}
+
+.movie label {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.movie img {
+    width: 100%;
+}
+
+.fa-trash {
+    cursor: pointer;
+    color: #e65151
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 @keyframes spin {
     to {
         transform: rotate(360deg);
     }
-}
-.checked {
-    color: orange;
 }

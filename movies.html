@@ -8,44 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="movies.css">
-
 </head>
 <body>
-<form id="movieForm">
-    <h1>Add your Movie</h1>
-    <label>Title</label>
-    <input type="text" name="title" required>
-    <label>Rating?</label>
-    <input name="rating" value="1" type="radio">
-    <input name="rating" value="2" type="radio">
-    <input name="rating" value="3" type="radio">
-    <input name="rating" value="4" type="radio">
-    <input name="rating" value="5" type="radio">
-<button type="button" id="submit">Submit</button>
 
-</form>
-
-<form>
-    <h1>Edit existing movie!</h1>
-    <input type="text" id="edit-movie">
-    <label>New Rating?</label>
-    <input name="new-rating" value="1" type="radio">
-    <input name="new-rating" value="2" type="radio">
-    <input name="new-rating" value="3" type="radio">
-    <input name="new-rating" value="4" type="radio">
-    <input name="new-rating" value="5" type="radio">
-    <button id="editMovie">Edit </button>
-</form>
-
-
-<h2>Search for a movie!</h2>
-<input type="text" id="search" placeholder="Search!">
-<button id="btn">Search!</button>
-<p id="results"></p>
-
-
-
-
-
+<div id="actions">
+    <div id="searchContainer">
+        <i class="fa fa-search fa-1x"></i>
+        <input type="text" id="search" placeholder="Search!">
+    </div>
+    <i id="add" class="fa fa-plus-circle fa-3x"></i>
+</div>
+<div id="results"></div>
 </body>
 </html>
