@@ -73,18 +73,16 @@ function Radio({name, length, icon, defaultValue}) {
 
     function updateButtons() {
         // use form input to update all of the icons
-        const value = parseInt(hiddenInput.val())
-        const children = container.children().not("input");
-        for (let i = 0; i < children.length; i++) {
-            // eq method gets child element at the index
-            const button = children.eq(i);
-            const id = i + 1
+        const value = parseInt(hiddenInput.val());
+        container.children().not("input").each((index, element) => {
+            const button = $(element);
+            const id = index + 1;
             if(id <= value) {
-                button.addClass('checked');
+                button.css({ color: 'orange' });
             } else {
-                button.removeClass('checked');
+                button.css({ color: 'white' });
             }
-        }
+        })
     }
 
     function RadioButton(id) {

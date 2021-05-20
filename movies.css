@@ -19,7 +19,11 @@ html, body {
 }
 
 i {
-    transition: color .5s;
+    transition: .5s;
+}
+
+i:hover {
+    transform: scale(1.2);
 }
 
 .checked {
