@@ -1,5 +1,5 @@
 # Movie API
-## 
+Personal database that houses and allows a user to edit  movies watched, plot, genre, personal rating and more. Utilizes pair programming, HTML, CSS, Javascript, JQuery (Ajax) and JSON databases.
 ## Features
 ### Edit function()
 ````javascript
@@ -19,7 +19,16 @@
         return $.post(URL, body).then(loadMovies);
     }
 ```
-# Search 
+### delete function()
+```javascript
+  function deleteMovie(id) {
+    return $.ajax({
+        url: `${URL}/${id}`,
+        type: 'DELETE'
+    }).then(loadMovies)
+}
+```
+### Search 
 ```javascript
  function filterMovies() {
         const input = $(this).val()
@@ -32,8 +41,7 @@
 - Filters out movies base on user input
 - debounced so that in only runs when the user is finished typing
 
-### Radio Input 
-- 
+### Radio Input  
 ```javascript
  Radio({
      name: 'rating',
@@ -42,3 +50,4 @@
      length: 5
  })
 ```
+
