@@ -204,9 +204,6 @@ $(document).ready(() => {
     const searchMovies = debounce(filterMovies)
     loadMovies()
     $("#search").keyup(searchMovies)
-    $('#submit').click(() => {
-        createMovie(getFormData(document.forms.movieForm))
-    })
     $('#add').click(() => {
         createMovie({})
     })
